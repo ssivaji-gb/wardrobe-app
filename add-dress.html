@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Dress - Wardrobe Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-brand">
+                <i class="fas fa-tshirt"></i>
+                <span>Wardrobe Manager</span>
+            </a>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="add-dress.html" class="nav-link active">
+                    <i class="fas fa-plus-circle"></i> Add Dress
+                </a>
+                <a href="wardrobe.html" class="nav-link">
+                    <i class="fas fa-wardrobe"></i> Wardrobe
+                </a>
+                <button id="logoutBtn" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+            <button class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Add Dress Content -->
+    <div class="container">
+        <div class="page-header">
+            <a href="wardrobe.html" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i> Back to Wardrobe
+            </a>
+            <h1>Add New Dress</h1>
+            <p>Fill in the details below to add a new dress to your wardrobe</p>
+        </div>
+
+        <!-- Alert for duplicates -->
+        <div id="duplicateAlert" class="alert alert-warning" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span></span>
+        </div>
+
+        <!-- Success message -->
+        <div id="successMessage" class="success-message" style="display: none;">
+            <i class="fas fa-check-circle"></i>
+            <span>Dress added successfully!</span>
+        </div>
+
+        <div class="form-card">
+            <form id="addDressForm" class="dress-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="dressName">
+                            <i class="fas fa-tag"></i> Dress Name *
+                        </label>
+                        <input type="text" id="dressName" required 
+                               placeholder="e.g., Blue Denim Jeans, Red Formal Shirt">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dressType">
+                            <i class="fas fa-tshirt"></i> Dress Type *
+                        </label>
+                        <select id="dressType" required>
+                            <option value="">Select Type</option>
+                            <option value="shirt">Shirt</option>
+                            <option value="t-shirt">T-Shirt</option>
+                            <option value="jeans">Jeans</option>
+                            <option value="saree">Saree</option>
+                            <option value="kurti">Kurti</option>
+                            <option value="dress">Dress</option>
+                            <option value="skirt">Skirt</option>
+                            <option value="jacket">Jacket</option>
+                            <option value="sweater">Sweater</option>
+                            <option value="trousers">Trousers</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="color">
+                            <i class="fas fa-palette"></i> Color *
+                        </label>
+                        <select id="color" required>
+                            <option value="">Select Color</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="pink">Pink</option>
+                            <option value="purple">Purple</option>
+                            <option value="orange">Orange</option>
+                            <option value="brown">Brown</option>
+                            <option value="gray">Gray</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">
+                            <i class="fas fa-layer-group"></i> Category *
+                        </label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="casual">Casual</option>
+                            <option value="formal">Formal</option>
+                            <option value="ethnic">Ethnic</option>
+                            <option value="sports">Sports</option>
+                            <option value="party">Party</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="occasion">
+                            <i class="fas fa-calendar-alt"></i> Occasion *
+                        </label>
+                        <select id="occasion" required>
+                            <option value="">Select Occasion</option>
+                            <option value="daily">Daily Wear</option>
+                            <option value="office">Office</option>
+                            <option value="party">Party</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="sports">Sports</option>
+                            <option value="travel">Travel</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="season">
+                            <i class="fas fa-cloud-sun"></i> Season *
+                        </label>
+                        <select id="season" required>
+                            <option value="">Select Season</option>
+                            <option value="summer">Summer</option>
+                            <option value="winter">Winter</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="spring">Spring</option>
+                            <option value="all">All Seasons</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="imageUrl">
+                        <i class="fas fa-image"></i> Image URL (Optional)
+                    </label>
+                    <input type="url" id="imageUrl" 
+                           placeholder="https://example.com/image.jpg">
+                    <small style="color: var(--gray); margin-top: 5px; display: block;">
+                        Leave blank to use a default image based on dress type
+                    </small>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Add to Wardrobe
+                    </button>
+                    <a href="wardrobe.html" class="btn btn-outline">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Image Preview -->
+        <div class="form-card" style="margin-top: 2rem;">
+            <h3><i class="fas fa-eye"></i> Preview</h3>
+            <div id="imagePreview" style="text-align: center; padding: 2rem; background: var(--light); border-radius: var(--border-radius);">
+                <p style="color: var(--gray);">Select dress type to see preview</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dress.js"></script>
+    <script>
+        // Image preview functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dressTypeSelect = document.getElementById('dressType');
+            const imagePreview = document.getElementById('imagePreview');
+            
+            const defaultImages = {
+                'shirt': 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=300&fit=crop&auto=format',
+                't-shirt': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop&auto=format',
+                'jeans': 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=300&fit=crop&auto=format',
+                'saree': 'https://images.unsplash.com/photo-1583636919110-8c6bde3c9c89?w=400&h=300&fit=crop&auto=format',
+                'kurti': 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=300&fit=crop&auto=format',
+                'dress': 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&h=300&fit=crop&auto=format'
+            };
+            
+            function updatePreview() {
+                const type = dressTypeSelect.value;
+                if (type && defaultImages[type]) {
+                    imagePreview.innerHTML = `
+                        <img src="${defaultImages[type]}" 
+                             alt="${type} preview" 
+                             style="max-width: 100%; max-height: 300px; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                        <p style="margin-top: 1rem; color: var(--gray);">Default ${type} image</p>
+                    `;
+                } else if (type) {
+                    imagePreview.innerHTML = `
+                        <div style="padding: 3rem; color: var(--gray);">
+                            <i class="fas fa-tshirt" style="font-size: 3rem;"></i>
+                            <p style="margin-top: 1rem;">No preview available for ${type}</p>
+                        </div>
+                    `;
+                } else {
+                    imagePreview.innerHTML = `
+                        <p style="color: var(--gray);">Select dress type to see preview</p>
+                    `;
+                }
+            }
+            
+            dressTypeSelect.addEventListener('change', updatePreview);
+            
+            // Initialize preview
+            updatePreview();
+        });
+    </script>
+</body>
+</html>
